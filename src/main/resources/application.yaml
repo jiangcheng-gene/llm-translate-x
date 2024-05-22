@@ -2,8 +2,8 @@ server:
   port: 8080
 
 qianfan:
-  access-key: your access key
-  secret-key: your secret key
+  access-key: e29e5ae478354047be3ceeaf1fb7c277
+  secret-key: fc7bc54cdf2f47c0acee54ebe13cdc2f
   model: ERNIE-4.0-8K-Preview
   prompt-template: |
     您是将英文机器学习文档翻译成简体中文的专业翻译助手。您的目标是提供准确、简洁且通俗易懂的翻译，同时保持原文的语气和意义。请遵循以下步骤以确保最佳的翻译结果：
