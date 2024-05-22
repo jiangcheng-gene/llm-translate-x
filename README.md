@@ -53,10 +53,9 @@ java -D spring.application='./application.yaml' llm-translate-x-1.0.0.jar
 
 ### 如何配置沉侵式翻译？
 1. 在chrome或其它浏览器中安装 `Immersive Translate - Translate Website & PDF` 插件。 
-   [img src='./static/image1.png']
+   ![图1](https://github.com/jiangcheng-gene/llm-translate-x/blob/main/static/image1.png)']
 2. 配置 deeplx
-   ![图1](.\\static\\image1.png)
-   ![图2](.\\static\\image2.png)
-   ![图3](.\\static\\image3.png)
-   ![图4](.\\static\\image4.png)
-   ![图5](.\\static\\image5.png)
+   ![图2](https://github.com/jiangcheng-gene/llm-translate-x/blob/main/static/image2.png)
+   ![图3](https://github.com/jiangcheng-gene/llm-translate-x/blob/main/static/image3.png)
+   ![图4](https://github.com/jiangcheng-gene/llm-translate-x/blob/main/static/image4.png)
+   ![图5](https://github.com/jiangcheng-gene/llm-translate-x/blob/main/static/image5.png)
