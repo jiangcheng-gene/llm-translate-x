@@ -2,35 +2,45 @@ package x.translate.llm.service;
 
 import com.baidubce.qianfan.Qianfan;
 import com.baidubce.qianfan.model.chat.ChatResponse;
-import java.time.Duration;
-import java.time.Instant;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
+import x.translate.llm.config.QianfanConfig;
+import x.translate.llm.config.TopConfig;
 import x.translate.llm.pojo.Result;
 
 /**
  * 百度翻译
  *
- * @author wangcong 2024 2024/5/22 10:31
+ * @author jiancheng.gene@proton.me 2024 2024/5/22 10:31
  * @since 1.0.0
  */
+@ConditionalOnProperty(prefix = "llm-provider", name = "enable", havingValue = "qianfan")
 @Service
-public class BaiduTranslationService {
+public class BaiduTranslationService implements TranslationService {
 
-    private static final Logger logger = LoggerFactory.getLogger(BaiduTranslationService.class);
-
-
-    @Value("${qianfan.model}")
     private String model;
 
-    @Autowired
     private Qianfan qianfan;
 
-    @Autowired
     private String promptTemplate;
+
+
+    public BaiduTranslationService(QianfanConfig qianfanConfig, TopConfig topConfig) {
+        this.qianfan = new Qianfan(qianfanConfig.getAccessKey(), qianfanConfig.getSecretKey());
+        this.model = qianfanConfig.getModel();
+
+        if (StringUtils.hasText(qianfanConfig.getPromptTemplate())) {
+            this.promptTemplate = qianfanConfig.getPromptTemplate();
+        } else {
+
+            if (StringUtils.hasText(topConfig.getPromptTemplate())) {
+                this.promptTemplate = topConfig.getPromptTemplate();
+            } else {
+                throw new IllegalArgumentException("please config prompt template!");
+            }
+        }
+    }
 
 
     /**
@@ -44,24 +54,19 @@ public class BaiduTranslationService {
     public Result translate(String text, String sourceLang, String targetLang) {
 
         String prompt = promptTemplate + System.lineSeparator() + text;
-
-        Instant start = Instant.now();
-        ChatResponse response = qianfan.chatCompletion().model(model).addMessage("user", prompt).execute();
-        Instant end = Instant.now();
-
-        Duration duration = Duration.between(start, end);
-
-        long l = duration.toMillis();
-
-        // 获取Duration的各种表示形式
-
+        ChatResponse response = qianfan.chatCompletion()
+                .model(model)
+                .addMessage("user", prompt)
+                .execute();
         if (response.getFlag() == null) {
-            logger.info("translate success. cost {} mils", l);
             return Result.success(response.getResult());
         }
-
-        logger.error("translate error. error message:{},  cost {} mils", response.getResult(), l);
         return Result.error(response.getResult());
+    }
+
+    @Override
+    public String getServiceToken() {
+        return "qianfan";
     }
 
 }

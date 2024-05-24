@@ -3,7 +3,7 @@ package x.translate.llm.pojo;
 import java.io.Serializable;
 
 /**
- * @author wangcong 2024 2024/5/22 10:45
+ * @author jiancheng.gene@proton.me 2024 2024/5/22 10:45
  * @since 1.0.0
  */
 public class Result<T> implements Serializable {
@@ -57,5 +57,9 @@ public class Result<T> implements Serializable {
 
     public String getMsg() {
         return msg;
+    }
+
+    public boolean isOk() {
+        return this.code == 200;
     }
 }
