@@ -5,8 +5,8 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * @author jiancheng.gene@proton.me 2024 2024/5/22 12:07
- * @since 1.0.0
+ * @author jiancheng.gene@proton.me 2024 2024/5/24 12:07
+ * @since 1.0.1
  */
 @ConditionalOnProperty(prefix = "llm-provider", name = "enable", havingValue = "dashscope")
 @Configuration
