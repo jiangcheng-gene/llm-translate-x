@@ -1,33 +1,43 @@
 package x.translate.llm.config;
 
-import com.baidubce.qianfan.Qianfan;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * @author wangcong 2024 2024/5/22 12:07
+ * @author jiancheng.gene@proton.me 2024 2024/5/24 18:09
  * @since 1.0.0
  */
+@ConditionalOnProperty(prefix = "llm-provider", name = "enable", havingValue = "qianfan")
 @Configuration
 public class QianfanConfig {
 
-    @Value("${qianfan.access-key}")
+    @Value("${llm-provider.qianfan.access-key}")
     private String accessKey;
 
-    @Value("${qianfan.secret-key}")
+    @Value("${llm-provider.qianfan.secret-key}")
     private String secretKey;
 
-    @Value("${qianfan.prompt-template}")
+    @Value("${llm-provider.qianfan.prompt-template}")
     private String promptTemplate;
 
-    @Bean
-    public Qianfan qianfan() {
-        return new Qianfan(accessKey, secretKey);
+    @Value("${llm-provider.qianfan.model}")
+    private String model;
+
+
+    public String getAccessKey() {
+        return accessKey;
     }
 
-    @Bean
-    public String promptTemplate() {
+    public String getSecretKey() {
+        return secretKey;
+    }
+
+    public String getPromptTemplate() {
         return promptTemplate;
+    }
+
+    public String getModel() {
+        return model;
     }
 }
