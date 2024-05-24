@@ -1,7 +1,7 @@
 package x.translate.llm.pojo;
 
 /**
- * @author wangcong 2024 2024/5/22 12:40
+ * @author jiancheng.gene@proton.me 2024 2024/5/22 12:40
  * @since 1.0.0
  */
 public class TranslationRequest {
