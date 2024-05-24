@@ -16,13 +16,13 @@ llm-provider:
 
   # 百度千帆
   qianfan:
-    access-key: e29e5ae478354047be3ceeaf1fb7c277
-    secret-key: fc7bc54cdf2f47c0acee54ebe13cdc2f
+    access-key: your access key
+    secret-key: your secret key
     model: ERNIE-4.0-8K-Preview
     prompt-template:
 
   # 阿里灵积
   dashscope:
-    api-key: sk-b650517b3bc444c9833f981bb5a45170
+    api-key: your api key
     model: qwen-turbo
     prompt-template:
