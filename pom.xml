@@ -12,7 +12,7 @@
 
   <groupId>x.translate</groupId>
   <artifactId>llm-translate-x</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
   <packaging>jar</packaging>
 
   <name>llm-translate-x</name>
@@ -77,6 +77,7 @@
   </repositories>
 
   <build>
+    <finalName>${project.artifactId}-${project.version}</finalName>
     <plugins>
       <!-- Maven Compiler Plugin -->
       <plugin>
@@ -93,17 +94,6 @@
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
-        <executions>
-          <execution>
-            <goals>
-              <goal>repackage</goal>
-            </goals>
-            <configuration>
-              <classifier>exec</classifier>
-              <includeSystemScope>true</includeSystemScope>
-            </configuration>
-          </execution>
-        </executions>
       </plugin>
     </plugins>
   </build>
