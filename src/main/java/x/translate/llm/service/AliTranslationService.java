@@ -22,8 +22,8 @@ import x.translate.llm.pojo.Result;
 /**
  * 阿里翻译
  *
- * @author jiancheng.gene@proton.me 2024 2024/5/22 10:31
- * @since 1.0.0
+ * @author jiancheng.gene@proton.me 2024 2024/5/24 10:31
+ * @since 1.0.1
  */
 @ConditionalOnProperty(prefix = "llm-provider", name = "enable", havingValue = "dashscope")
 @Service
