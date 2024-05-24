@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
 /**
- * @author wangcong 2024 2024/5/22 12:35
+ * @author jiancheng.gene@proton.me 2024 2024/5/22 12:35
  * @since 1.0.0
  */
 @SpringBootApplication
@@ -20,9 +20,10 @@ public class XTranslationApplication {
 
         ConfigurableApplicationContext run = SpringApplication.run(XTranslationApplication.class, args);
 
-        String property = run.getEnvironment().getProperty("server.port");
+        String port = run.getEnvironment().getProperty("server.port");
+        String provider = run.getEnvironment().getProperty("llm-provider.enable");
 
-        logger.info("translate server running on: http://localhost:{}/api/translate", property);
+        logger.info("{} translate server running on: http://localhost:{}/api/translate", provider, port);
     }
 
 }
