@@ -90,7 +90,7 @@ public class AliTranslationService implements TranslationService {
                 }
 
                 if (choices.size() == 1) {
-                    return Result.success(choices.get(0).getMessage());
+                    return Result.success(choices.get(0).getMessage().getContent());
                 }
 
                 String collect = choices.stream().map(c -> c.getMessage().getContent()).collect(Collectors.joining(""));
