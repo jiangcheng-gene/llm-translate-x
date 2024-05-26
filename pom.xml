@@ -31,6 +31,11 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-json</artifactId>
     </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-configuration-processor</artifactId>
+      <optional>true</optional>
+    </dependency>
 
     <!-- 百度千帆SDK依赖 -->
     <dependency>
@@ -45,6 +50,14 @@
       <artifactId>dashscope-sdk-java</artifactId>
       <version>2.14.4</version>
     </dependency>
+
+    <!--  open ai  -->
+    <dependency>
+      <groupId>com.theokanning.openai-gpt3-java</groupId>
+      <artifactId>service</artifactId>
+      <version>0.18.2</version>
+    </dependency>
+
 
 
   </dependencies>
