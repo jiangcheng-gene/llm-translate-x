@@ -1,5 +1,7 @@
 package x.translate.llm.pojo;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  * @author jiancheng.gene@proton.me 2024 2024/5/22 12:40
  * @since 1.0.0
@@ -7,8 +9,12 @@ package x.translate.llm.pojo;
 public class TranslationRequest {
 
     private String text;
-    private String sourceLang;
+
+    @JsonProperty("target_lang")
     private String targetLang;
+
+    @JsonProperty("source_lang")
+    private String sourceLang;
 
     // Getters and setters
     public String getText() {
